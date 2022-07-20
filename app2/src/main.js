@@ -1,15 +1,23 @@
 import './public-path';
 import { createApp } from 'vue'
 import App from './App.vue'
-import router from './router'
+import { routes } from './router'
 import store from './store'
-let app = null;
+import { createRouter, createWebHistory } from 'vue-router'
+
+let router = null
+let instance = null
+let history = null
 
 // 渲染函数
 function render(props = {}) {
   const { container } = props;
-  app = createApp(App);
-  createApp(App)
+  history = createWebHistory(window.__POWERED_BY_QIANKUN__ ? '/app2/' : '/')
+  router = createRouter({
+    history,
+    routes
+  })
+  instance = createApp(App)
     .use(store)
     .use(router)
     .mount(container ? container.querySelector("#app") : "#app");
@@ -34,5 +42,8 @@ export async function mount(props) {
 }
 export async function unmount() {
   console.log("[vue] vue app unmount");
-  app.unmount();
+  instance.$.appContext.app.unmount()
+  instance = null;
+  router = null;
+  history.destroy();
 }

@@ -1,7 +1,8 @@
 <template>
   <div>
     <router-view></router-view>
-    <div id="container"></div>
+    <div id="container1"></div>
+    <div id="container2"></div>
     <el-button type="primary" size="default" @click="$router.push('/')">/</el-button>
     <el-button type="primary" size="default" @click="$router.push('/app1')">/app1</el-button>
     <el-button type="primary" size="default" @click="$router.push('/app1/about')">/app1/about</el-button>

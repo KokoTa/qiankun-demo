@@ -1,6 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
-
-const routes = [
+export const routes = [
   {
     path: '/',
     name: 'home',
@@ -12,8 +10,3 @@ const routes = [
     component: () => import('../views/AboutView.vue')
   }
 ]
-
-export default createRouter({
-  history: createWebHistory(window.__POWERED_BY_QIANKUN__ ? '/app2/' : '/'),
-  routes
-})
