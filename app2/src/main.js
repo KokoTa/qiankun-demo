@@ -38,6 +38,11 @@ export async function bootstrap() {
 }
 export async function mount(props) {
   console.log("[vue] props from main framework", props);
+
+  props.onGlobalStateChange((cur, prev) => {
+    console.log('app2 onGlobalStateChange: ', cur, prev);
+  });
+
   render(props);
 }
 export async function unmount() {
